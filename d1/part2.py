@@ -20,7 +20,7 @@ def calccalval(word):
         if letter.isnumeric():
             nums += letter
     
-    ans = nums[0] + nums[len(nums)-1]
+    ans = nums[0] + nums[-1]
     return int(ans)
 
 
@@ -33,7 +33,10 @@ def insert_nums(line):
                 if mapping[key] != -1:
                     mapping[key] += 1
     
+    print(line) 
+    print(calccalval(line))
     sum += calccalval(line) 
+    print(sum)
 
 
 def populate_mapping(line):
@@ -52,7 +55,6 @@ for line in file:
 
 print(sum)
 
-
-
+populate_mapping("jonen0")
 
 file.close()
