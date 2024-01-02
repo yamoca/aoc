@@ -13,8 +13,6 @@ def calccalval(word):
         if letter.isnumeric():
             nums += letter
     
-    nums += isdigit(word)
-
     ans = nums[0] + nums[len(nums)-1]
     return int(ans)
 
