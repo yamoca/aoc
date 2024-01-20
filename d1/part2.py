@@ -27,31 +27,43 @@ def calccalval(word):
 def insert_nums(line):
     global sum
     for key in mapping: 
-        if len(mapping[key]) > 0: # mapping[key] is a list that could be empty
+        if mapping[key][0] != -1: # mapping[key] is a list that could be empty
             line = line[:mapping[key][0]+1] + str(digit_dict[key]) + line[mapping[key][0]+1:]
-            #for key in mapping: # because a new digit has been inserted, the length of the string has changed and so indexs need to shift positions
-                #if mapping[key] != -1:
-                    #mapping[key] += 1
-    
+            for key in mapping: # because a new digit has been inserted, the length of the string has changed and so indexs need to shift positions
+                if mapping[key][0] != -1:
+                    mapping[key][0] += 1
+
     print(mapping)
-    print(line) 
+    print(line)
     print(calccalval(line))
     sum += calccalval(line) 
     print(sum)
-
+    print(mapping)
 
 def populate_mapping(line):
     for key in digit_dict:
         list = [] 
-        mapping[key] = list.append(line.find(key))
+        list.append(line.find(key))
+        mapping[key] = list
+       
+
+    print(mapping)
+    insert_nums(line)    
+
+def populate_mapping2(line):
+    for key in digit_dict:
+        mapping[key].append(line.find(key))
+       
 
     print(mapping)
     insert_nums(line)    
 
 
-   
-populate_mapping("1234sevenaljdfoursevenfivesixnine")
 
+# clumsy but could use recursion method ie insert numbers and map multiple times: iteration 1: "sevenseven" -> "s7evenseven" iteration 2: "s7evenseven" -> "s7evens7even" 
+
+populate_mapping("1234fourjdfoursevenfivesixnine")
+populate_mapping2("1234fourjdfoursevenfivesixnine")
 ##for line in file:
     ##populate_mapping(line)
 
